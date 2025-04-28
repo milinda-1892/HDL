@@ -1,0 +1,66 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001f4a7d02ce0 .scope module, "compfull1b" "compfull1b" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "a_eq_b";
+    .port_info 3 /OUTPUT 1 "a_lt_b";
+    .port_info 4 /OUTPUT 1 "a_gt_b";
+o000001f4a7d36fb8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001f4a7d033b0_0 .net "a", 0 0, o000001f4a7d36fb8;  0 drivers
+v000001f4a7d035d0_0 .var "a_eq_b", 0 0;
+v000001f4a7e7eec0_0 .var "a_gt_b", 0 0;
+v000001f4a7d02e70_0 .var "a_lt_b", 0 0;
+o000001f4a7d37078 .functor BUFZ 1, C4<z>; HiZ drive
+v000001f4a7d02f10_0 .net "b", 0 0, o000001f4a7d37078;  0 drivers
+E_000001f4a7e7de20 .event anyedge, v000001f4a7d033b0_0, v000001f4a7d02f10_0;
+    .scope S_000001f4a7d02ce0;
+T_0 ;
+    %wait E_000001f4a7e7de20;
+    %load/vec4 v000001f4a7d033b0_0;
+    %load/vec4 v000001f4a7d02f10_0;
+    %cmp/e;
+    %jmp/0xz  T_0.0, 4;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001f4a7d035d0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001f4a7d02e70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001f4a7e7eec0_0, 0, 1;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v000001f4a7d033b0_0;
+    %load/vec4 v000001f4a7d02f10_0;
+    %cmp/u;
+    %jmp/0xz  T_0.2, 5;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001f4a7d035d0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001f4a7d02e70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001f4a7e7eec0_0, 0, 1;
+    %jmp T_0.3;
+T_0.2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001f4a7d035d0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001f4a7d02e70_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001f4a7e7eec0_0, 0, 1;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "compfull1b.v";
