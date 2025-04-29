@@ -1,0 +1,48 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001af591e2ce0 .scope module, "fulladderNb" "fulladderNb" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 4 "sum";
+    .port_info 4 /OUTPUT 1 "cout";
+P_000001af59358410 .param/l "N" 0 2 2, +C4<00000000000000000000000000000100>;
+L_000001af59260070 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001af591e2e70_0 .net *"_ivl_10", 0 0, L_000001af59260070;  1 drivers
+v000001af591e2f10_0 .net *"_ivl_11", 4 0, L_000001af59211c10;  1 drivers
+v000001af591e2fb0_0 .net *"_ivl_13", 4 0, L_000001af59211490;  1 drivers
+L_000001af592600b8 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000001af591e3050_0 .net *"_ivl_16", 3 0, L_000001af592600b8;  1 drivers
+v000001af591e30f0_0 .net *"_ivl_17", 4 0, L_000001af59211990;  1 drivers
+v000001af5935e710_0 .net *"_ivl_3", 4 0, L_000001af59211350;  1 drivers
+L_000001af59260028 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001af5935e7b0_0 .net *"_ivl_6", 0 0, L_000001af59260028;  1 drivers
+v000001af5935e850_0 .net *"_ivl_7", 4 0, L_000001af592113f0;  1 drivers
+o000001af59217118 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001af5935e8f0_0 .net "a", 3 0, o000001af59217118;  0 drivers
+o000001af59217148 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001af5935ea20_0 .net "b", 3 0, o000001af59217148;  0 drivers
+o000001af59217178 .functor BUFZ 1, C4<z>; HiZ drive
+v000001af5935eac0_0 .net "cin", 0 0, o000001af59217178;  0 drivers
+v000001af59212070_0 .net "cout", 0 0, L_000001af59212110;  1 drivers
+v000001af59211df0_0 .net "sum", 3 0, L_000001af59211e90;  1 drivers
+L_000001af59212110 .part L_000001af59211990, 4, 1;
+L_000001af59211e90 .part L_000001af59211990, 0, 4;
+L_000001af59211350 .concat [ 4 1 0 0], o000001af59217118, L_000001af59260028;
+L_000001af592113f0 .concat [ 4 1 0 0], o000001af59217148, L_000001af59260070;
+L_000001af59211c10 .arith/sum 5, L_000001af59211350, L_000001af592113f0;
+L_000001af59211490 .concat [ 1 4 0 0], o000001af59217178, L_000001af592600b8;
+L_000001af59211990 .arith/sum 5, L_000001af59211c10, L_000001af59211490;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "fulladderNb.v";
