@@ -1,0 +1,166 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001efd4b88e50 .scope module, "tb" "tb" 2 4;
+ .timescale -9 -12;
+v000001efd4a57750_0 .var "a", 3 0;
+v000001efd4b89af0_0 .var/i "errors", 31 0;
+v000001efd4b8a5d0_0 .var "expected", 3 0;
+v000001efd4a32d20_0 .var/i "i", 31 0;
+v000001efd4a32dc0_0 .net "y", 3 0, v000001efd4a65f30_0;  1 drivers
+S_000001efd4b88fe0 .scope module, "uut" "inv" 2 16, 3 1 0, S_000001efd4b88e50;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /OUTPUT 4 "y";
+v000001efd4a33540_0 .net "a", 3 0, v000001efd4a57750_0;  1 drivers
+v000001efd4a65f30_0 .var "y", 3 0;
+E_000001efd4a5c2d0 .event anyedge, v000001efd4a33540_0;
+    .scope S_000001efd4b88fe0;
+T_0 ;
+    %wait E_000001efd4a5c2d0;
+    %load/vec4 v000001efd4a33540_0;
+    %inv;
+    %store/vec4 v000001efd4a65f30_0, 0, 4;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_000001efd4b88e50;
+T_1 ;
+    %vpi_call 2 24 "$display", "===== 4-bit Inverter Testbench =====" {0 0 0};
+    %vpi_call 2 25 "$display", "Time\011 Input(a)\011 Output(y)\011 Expected\011 Status" {0 0 0};
+    %vpi_call 2 26 "$display", "----\011 --------\011 ---------\011 --------\011 -------" {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001efd4b89af0_0, 0, 32;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001efd4a57750_0, 0, 4;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001efd4a32d20_0, 0, 32;
+T_1.0 ;
+    %load/vec4 v000001efd4a32d20_0;
+    %cmpi/s 16, 0, 32;
+    %jmp/0xz T_1.1, 5;
+    %load/vec4 v000001efd4a32d20_0;
+    %pad/s 4;
+    %store/vec4 v000001efd4a57750_0, 0, 4;
+    %load/vec4 v000001efd4a32d20_0;
+    %inv;
+    %pad/s 4;
+    %store/vec4 v000001efd4b8a5d0_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000001efd4a32dc0_0;
+    %load/vec4 v000001efd4b8a5d0_0;
+    %cmp/e;
+    %jmp/0xz  T_1.2, 4;
+    %vpi_call 2 39 "$display", "%0t\011 %b(%2d)\011 %b(%2d)\011 %b(%2d)\011 PASS", $time, v000001efd4a57750_0, v000001efd4a57750_0, v000001efd4a32dc0_0, v000001efd4a32dc0_0, v000001efd4b8a5d0_0, v000001efd4b8a5d0_0 {0 0 0};
+    %jmp T_1.3;
+T_1.2 ;
+    %vpi_call 2 42 "$display", "%0t\011 %b(%2d)\011 %b(%2d)\011 %b(%2d)\011 FAIL", $time, v000001efd4a57750_0, v000001efd4a57750_0, v000001efd4a32dc0_0, v000001efd4a32dc0_0, v000001efd4b8a5d0_0, v000001efd4b8a5d0_0 {0 0 0};
+    %load/vec4 v000001efd4b89af0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001efd4b89af0_0, 0, 32;
+T_1.3 ;
+    %load/vec4 v000001efd4a32d20_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001efd4a32d20_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %vpi_call 2 49 "$display", "\012===== Test Summary =====" {0 0 0};
+    %load/vec4 v000001efd4b89af0_0;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_1.4, 4;
+    %vpi_call 2 51 "$display", "\342\234\223 ALL TESTS PASSED! (16/16)" {0 0 0};
+    %jmp T_1.5;
+T_1.4 ;
+    %vpi_call 2 53 "$display", "\342\234\227 %0d TESTS FAILED out of 16", v000001efd4b89af0_0 {0 0 0};
+T_1.5 ;
+    %vpi_call 2 57 "$display", "\012===== Additional Test Cases =====" {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001efd4a57750_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000001efd4a32dc0_0;
+    %cmpi/e 15, 0, 4;
+    %flag_mov 8, 4;
+    %jmp/0 T_1.6, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_1.7, 8;
+T_1.6 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_1.7, 8;
+ ; End of false expr.
+    %blend;
+T_1.7;
+    %vpi_call 2 61 "$display", "Test 1 - All zeros: a=%b, y=%b, expected=%b %s", v000001efd4a57750_0, v000001efd4a32dc0_0, 4'b1111, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000001efd4a57750_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000001efd4a32dc0_0;
+    %cmpi/e 0, 0, 4;
+    %flag_mov 8, 4;
+    %jmp/0 T_1.8, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_1.9, 8;
+T_1.8 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_1.9, 8;
+ ; End of false expr.
+    %blend;
+T_1.9;
+    %vpi_call 2 66 "$display", "Test 2 - All ones:  a=%b, y=%b, expected=%b %s", v000001efd4a57750_0, v000001efd4a32dc0_0, 4'b0000, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v000001efd4a57750_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000001efd4a32dc0_0;
+    %cmpi/e 5, 0, 4;
+    %flag_mov 8, 4;
+    %jmp/0 T_1.10, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_1.11, 8;
+T_1.10 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_1.11, 8;
+ ; End of false expr.
+    %blend;
+T_1.11;
+    %vpi_call 2 71 "$display", "Test 3 - Alt pattern: a=%b, y=%b, expected=%b %s", v000001efd4a57750_0, v000001efd4a32dc0_0, 4'b0101, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000001efd4a57750_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000001efd4a32dc0_0;
+    %cmpi/e 10, 0, 4;
+    %flag_mov 8, 4;
+    %jmp/0 T_1.12, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_1.13, 8;
+T_1.12 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_1.13, 8;
+ ; End of false expr.
+    %blend;
+T_1.13;
+    %vpi_call 2 76 "$display", "Test 4 - Rev alt:     a=%b, y=%b, expected=%b %s", v000001efd4a57750_0, v000001efd4a32dc0_0, 4'b1010, S<0,vec4,u32> {1 0 0};
+    %vpi_call 2 79 "$display", "\012===== Testbench Complete =====" {0 0 0};
+    %vpi_call 2 80 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_000001efd4b88e50;
+T_2 ;
+    %vpi_call 2 85 "$monitor", "At time %0t: a = %b (%0d), y = %b (%0d)", $time, v000001efd4a57750_0, v000001efd4a57750_0, v000001efd4a32dc0_0, v000001efd4a32dc0_0 {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_000001efd4b88e50;
+T_3 ;
+    %vpi_call 2 91 "$dumpfile", "dump.vcd" {0 0 0};
+    %vpi_call 2 92 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001efd4b88e50 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb.v";
+    "./inverter.v";

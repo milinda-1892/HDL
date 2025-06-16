@@ -1,0 +1,82 @@
+$date
+	Wed Jun 04 08:37:20 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb $end
+$var wire 1 ! led $end
+$var reg 1 " button $end
+$var reg 1 # clk $end
+$var reg 1 $ reset $end
+$scope module uut $end
+$var wire 1 " button $end
+$var wire 1 # clk $end
+$var wire 1 $ reset $end
+$var reg 1 ! led $end
+$var reg 1 % state $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0%
+1$
+0#
+x"
+0!
+$end
+#3
+0$
+#5
+1#
+#10
+0#
+#13
+1"
+#15
+1!
+1%
+1#
+#20
+0#
+#25
+1#
+#30
+0#
+#35
+1#
+#40
+0#
+#43
+0"
+#45
+0!
+0%
+1#
+#50
+0#
+#55
+1#
+#60
+0#
+#65
+1#
+#70
+0#
+#73
+1"
+#75
+1!
+1%
+1#
+#80
+0#
+#85
+1#
+#90
+0#
+#93
